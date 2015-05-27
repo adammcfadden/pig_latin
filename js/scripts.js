@@ -17,6 +17,9 @@ var moveConsonants = function(word) {
         word = (word.split(/\b[^q]*/)[1] + word.match(/\b[^q]*/));
         word = moveQU(word);
       }
+    } else if ((word.includes("y")) && ((word.charAt(0) !== "y"))){
+      word = moveQU(word);
+      word = (word.split(/\b[^aeiouy]*/)[1] + word.match(/\b[^aeiouy]*/));
     } else {
       word = moveQU(word);
       word = (word.split(/\b[^aeiou]*/)[1] + word.match(/\b[^aeiou]*/));
@@ -24,7 +27,6 @@ var moveConsonants = function(word) {
   }
   return word;
 };
-
 
 var moveQU = function(word) {
   if (word.replace(word.slice(2), "").includes("qu")) {

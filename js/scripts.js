@@ -49,3 +49,16 @@ var moveQU = function(word) {
     return word;
   }
 };
+
+$(document).ready(function() {
+  $("form#translate").submit(function(event) {
+    $(".entered_text").empty();
+    $(".translated_text").empty();
+    var enteredText = ($("input#input_text").val());
+    var pigLatin = translate(enteredText);
+    $(".entered_text").text(enteredText);
+    $(".translated_text").text(pigLatin);
+    $(".results").show();
+    event.preventDefault();
+  });
+});

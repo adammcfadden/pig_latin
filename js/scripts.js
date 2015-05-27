@@ -1,4 +1,14 @@
-var translate = function(word) {
+var translate = function(input) {
+  var inputArray = input.split(" ");
+  var newArray = [];
+  var arrayLength = inputArray.length;
+  for (; arrayLength > 0; arrayLength--) {
+    newArray.push(translateWord(inputArray.shift()));
+  }
+  return newArray.join(" ");
+};
+
+var translateWord = function(word) {
   var translatedWord = moveConsonants(word);
   return addAy(translatedWord);
 };
@@ -17,7 +27,7 @@ var moveConsonants = function(word) {
         word = (word.split(/\b[^q]*/)[1] + word.match(/\b[^q]*/));
         word = moveQU(word);
       }
-    } else if ((word.includes("y")) && ((word.charAt(0) !== "y"))){
+    } else if ((word.includes("y")) && (word.charAt(0) !== "y")){
       word = moveQU(word);
       word = (word.split(/\b[^aeiouy]*/)[1] + word.match(/\b[^aeiouy]*/));
     } else {

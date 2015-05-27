@@ -34,18 +34,23 @@ describe('translate', function() {
     expect(translate(word)).to.equal("ealsquay");
   });
 
-  it('will treat "y" as a consonant and move it to the end', function() {
+  it('will treat "y" as a consonant and move it to the end if it starts a word', function() {
     var word = "yellow";
     expect(translate(word)).to.equal("ellowyay");
   });
 
-  it('will treat "y" as a vowel and move it to the end', function() {
+  it('will treat "y" as a vowel and not move it to the end', function() {
     var word = "by";
     expect(translate(word)).to.equal("ybay");
   });
 
-  it('will treat "y" as a vowel and move it to the end', function() {
+  it('will treat "y" as a vowel and not move it to the end if it is in the middle of a word', function() {
     var word = "bys";
     expect(translate(word)).to.equal("ysbay");
+  });
+
+  it('will convert a sentence to pig latin', function() {
+    var sentence = "This is Pig Latin";
+    expect(translate(sentence)).to.equal("isThay isay igPay atinLay");
   });
 });
